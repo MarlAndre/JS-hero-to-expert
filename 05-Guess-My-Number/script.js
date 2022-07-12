@@ -14,11 +14,8 @@ console.log(document.querySelector('.guess').value);
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 
-document.querySelector('.number').textContent = secretNumber;
-
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
-  console.log(guess);
 
   // When no input
   if (!guess) {
@@ -30,6 +27,7 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').textContent = 'Correct Number !';
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
+    document.querySelector('.number').textContent = secretNumber;
 
     // Guess too high
   } else if (guess > secretNumber) {
@@ -53,4 +51,20 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
+
+// Reload game with again button
+// - select again button and add even listener on click
+// - find element to play game again
+
+document.querySelector('.again').addEventListener('click', function () {
+  // Restore initial values
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').value = '';
+
+  // Restore tyling
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
 });
