@@ -54,11 +54,11 @@ btnRoll.addEventListener('click', function () {
   }
 });
 
-// Holding score fucntionality
+// Holding score functionality
 btnHold.addEventListener('click', function () {
   // 1. Add current score to active's player score
   scores[activePlayer] += currentScore;
-  document.getElementById(`current--${activePlayer}`).textContent =
+  document.getElementById(`score--${activePlayer}`).textContent =
     scores[activePlayer];
 
   // 2. Check if player's score >= 10
