@@ -14,16 +14,26 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
+let scores, currentScore, activePlayer, playing;
 // Starting conditions
-let playing = true;
-score0El.textContent = 0;
-score1El.textContent = 0;
-diceEl.classList.add('hidden');
+const refresh = function () {
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  playing = true;
 
-// Hold score to player 0 and 1
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
+  diceEl.classList.add('hidden');
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--active');
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
+  console.log(scores);
+};
+refresh();
 
 // Switch to next player
 const switchPlayer = function () {
@@ -82,3 +92,7 @@ btnHold.addEventListener('click', function () {
     }
   }
 });
+
+// Reload game when New Game btn is clicked
+
+btnNew.addEventListener('click', refresh);
